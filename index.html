@@ -12,21 +12,22 @@
 </head>
 
 <body>
-    <div class="highest-lowest">
-        <h2 id="highestLowest">Highest Selling Video Games</h2>
+    <div class="eu-na-sales">
+        <h2 id="EU-NA">Highest Selling Video Games</h2>
         <button onclick="updateChart()">Switch</button>
         <canvas id="myChart"></canvas>
     </div>
     <script>
+        const NA_Sales = [41.49, 29.08, 15.85, 15.75, 11.27, 23.2, 11.38, 14.03, 14.59, 26.93];
+        const EU_Sales = [29.02, 3.58, 12.88, 11.01, 8.89, 2.26, 9.23, 9.2, 7.06, 0.63,];
         const ctx = document.getElementById('myChart');
-
         const chart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: ['Wii Sports', 'Super Mario Bros.', 'Mario Kart Wii', 'Wii Sports Resort', 'Pokemon Red/Blue', 'Tetris', 'New Super Mario Bros.', 'Wii Play', 'New Super Mario Bros. Wii', 'Duck Hunt'],
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
+                    label: '# of Sales in millions',
+                    data: NA_Sales,
                     borderWidth: 1
                 }]
             },
@@ -40,7 +41,7 @@
         });
 
         function updateChart() {
-            chart.data.datasets[0].data = [10, 20, 30, 40, 50, 60, 70];
+            chart.data.datasets[0].data = EU_Sales;
             chart.update();
         };
     </script>
