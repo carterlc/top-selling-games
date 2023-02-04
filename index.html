@@ -12,14 +12,21 @@
 </head>
 
 <body>
-    <div class="eu-na-sales">
-        <h2 id="EU-NA">Highest Selling Video Games</h2>
-        <button onclick="updateChart()">Switch</button>
+    <h1>Highest Selling Video Games of all Time</h1>
+    <div class="card">
+        <h2 id="EU-NA">Europe vs North America</h2>
+        <button onclick="EU_Chart()">Europe</button>
+        <button onclick="NA_Chart()">North America</button>
         <canvas id="myChart"></canvas>
+    </div>
+    <div class="card">
+        <h2>Global</h2>
+        <canvas id="topGlobal"></canvas>
     </div>
     <script>
         const NA_Sales = [41.49, 29.08, 15.85, 15.75, 11.27, 23.2, 11.38, 14.03, 14.59, 26.93];
         const EU_Sales = [29.02, 3.58, 12.88, 11.01, 8.89, 2.26, 9.23, 9.2, 7.06, 0.63,];
+        const Global_Sales = [82.74, 40.24, 35.82, 33, 31.37, 30.26, 30.01, 29.02, 28.62, 28.31,]
         const ctx = document.getElementById('myChart');
         const chart = new Chart(ctx, {
             type: 'bar',
@@ -34,16 +41,52 @@
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function (value) {
+                                return "$" + value + "m";
+                            }
+                        }
                     }
                 }
             }
         });
-
-        function updateChart() {
-            chart.data.datasets[0].data = EU_Sales;
+        //changes the charts values to display either NA or EU sales on button click
+        function NA_Chart() {
+            chart.data.datasets[0].data = NA_Sales
             chart.update();
-        };
+
+        }
+        function EU_Chart() {
+            chart.data.datasets[0].data = EU_Sales
+            chart.update();
+
+        }
+            //top selling video games globaly
+            const xx = document.getElementById('topGlobal');
+            const topGlobal = new Chart(xx, {
+                type: 'bar',
+                data: {
+                    labels: ['Wii Sports', 'Super Mario Bros.', 'Mario Kart Wii', 'Wii Sports Resort', 'Pokemon Red/Blue', 'Tetris', 'New Super Mario Bros.', 'Wii Play', 'New Super Mario Bros. Wii', 'Duck Hunt'],
+                    datasets: [{
+                        label: '# of Sales in millions',
+                        data: Global_Sales,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function (value) {
+                                    return "$" + value + "m";
+                                }
+                            }
+                        }
+                    }
+                }
+            });
     </script>
 </body>
 
