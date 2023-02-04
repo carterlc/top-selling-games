@@ -12,7 +12,13 @@
 </head>
 
 <body>
-    <h1>Highest Selling Video Games of all Time</h1>
+    <div class="hero">
+        <h1>Highest Selling Video Games of all Time</h1>
+    </div>
+    <div class="card">
+        <h2>Top Ten Global</h2>
+        <canvas id="topGlobal"></canvas>
+    </div>
     <div class="card">
         <h2 id="EU-NA">Europe vs North America</h2>
         <button onclick="EU_Chart()">Europe</button>
@@ -20,13 +26,17 @@
         <canvas id="myChart"></canvas>
     </div>
     <div class="card">
-        <h2>Global</h2>
-        <canvas id="topGlobal"></canvas>
+        <h2>Top 1000</h2>
+        <canvas id="all_Global"></canvas>
     </div>
     <script>
+        //arays of data
         const NA_Sales = [41.49, 29.08, 15.85, 15.75, 11.27, 23.2, 11.38, 14.03, 14.59, 26.93];
         const EU_Sales = [29.02, 3.58, 12.88, 11.01, 8.89, 2.26, 9.23, 9.2, 7.06, 0.63,];
         const Global_Sales = [82.74, 40.24, 35.82, 33, 31.37, 30.26, 30.01, 29.02, 28.62, 28.31,]
+
+
+        //first chart: top ten highes selling video games
         const ctx = document.getElementById('myChart');
         const chart = new Chart(ctx, {
             type: 'bar',
@@ -62,31 +72,62 @@
             chart.update();
 
         }
-            //top selling video games globaly
-            const xx = document.getElementById('topGlobal');
-            const topGlobal = new Chart(xx, {
-                type: 'bar',
-                data: {
-                    labels: ['Wii Sports', 'Super Mario Bros.', 'Mario Kart Wii', 'Wii Sports Resort', 'Pokemon Red/Blue', 'Tetris', 'New Super Mario Bros.', 'Wii Play', 'New Super Mario Bros. Wii', 'Duck Hunt'],
-                    datasets: [{
-                        label: '# of Sales in millions',
-                        data: Global_Sales,
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                callback: function (value) {
-                                    return "$" + value + "m";
-                                }
+        //top selling video games globaly
+        const x = document.getElementById('topGlobal');
+        const topGlobal = new Chart(x, {
+            type: 'bar',
+            data: {
+                labels: ['Wii Sports', 'Super Mario Bros.', 'Mario Kart Wii', 'Wii Sports Resort', 'Pokemon Red/Blue', 'Tetris', 'New Super Mario Bros.', 'Wii Play', 'New Super Mario Bros. Wii', 'Duck Hunt'],
+                datasets: [{
+                    label: '# of Sales in millions',
+                    data: Global_Sales,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function (value) {
+                                return "$" + value + "m";
                             }
                         }
                     }
                 }
-            });
+            }
+        });
+
+        //Top 1000 highest selling video games
+        const xx = document.getElementById('allGlobal');
+        const allGlobal = new Chart(xx, {
+            type: 'bar',
+            data: {
+                labels: ['Wii Sports', 'Super Mario Bros.', 'Mario Kart Wii', 'Wii Sports Resort', 'Pokemon Red/Blue', 'Tetris', 'New Super Mario Bros.', 'Wii Play', 'New Super Mario Bros. Wii', 'Duck Hunt'],
+                datasets: [{
+                    label: '# of Sales in millions',
+                    data: Global_Sales,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function (value) {
+                                return "$" + value + "m";
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+    </script>
+    <script type="module">
+        //import script main
+
     </script>
 </body>
 
