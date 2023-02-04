@@ -27,10 +27,14 @@
     </div>
     <div class="card">
         <h2>Top 1000</h2>
-        <canvas id="all_Global"></canvas>
+        <canvas id="allGlobal"></canvas>
     </div>
-    <script>
+    <script type ="module" src ="scripts/script-main.js">
+        //import array from script-main
+        import {getAllSales} from './scripts/script-main.js';
+        
         //arays of data
+        const games = getAllSales();
         const NA_Sales = [41.49, 29.08, 15.85, 15.75, 11.27, 23.2, 11.38, 14.03, 14.59, 26.93];
         const EU_Sales = [29.02, 3.58, 12.88, 11.01, 8.89, 2.26, 9.23, 9.2, 7.06, 0.63,];
         const Global_Sales = [82.74, 40.24, 35.82, 33, 31.37, 30.26, 30.01, 29.02, 28.62, 28.31,]
@@ -106,7 +110,7 @@
                 labels: ['Wii Sports', 'Super Mario Bros.', 'Mario Kart Wii', 'Wii Sports Resort', 'Pokemon Red/Blue', 'Tetris', 'New Super Mario Bros.', 'Wii Play', 'New Super Mario Bros. Wii', 'Duck Hunt'],
                 datasets: [{
                     label: '# of Sales in millions',
-                    data: Global_Sales,
+                    data: games,
                     borderWidth: 1
                 }]
             },
@@ -123,10 +127,6 @@
                 }
             }
         });
-
-    </script>
-    <script type="module">
-        //import script main
 
     </script>
 </body>
