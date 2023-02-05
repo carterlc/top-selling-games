@@ -20,7 +20,7 @@
         <canvas id="topGlobal"></canvas>
     </div>
     <div class="card">
-        <h2 id="EU-NA">Europe vs North America</h2>
+        <h2 id="EU-NA">North America Versus Europe</h2>
         <button onclick="EU_Chart()">Europe</button>
         <button onclick="NA_Chart()">North America</button>
         <canvas id="myChart"></canvas>
@@ -50,7 +50,7 @@
         const chart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Wii Sports', 'Super Mario Bros.', 'Mario Kart Wii', 'Wii Sports Resort', 'Pokemon Red/Blue', 'Tetris', 'New Super Mario Bros.', 'Wii Play', 'New Super Mario Bros. Wii', 'Duck Hunt'],
+                labels: NA_Titles,
                 datasets: [{
                     label: '# of Sales in millions',
                     data: NA_Sales,
