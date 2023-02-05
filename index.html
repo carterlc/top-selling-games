@@ -36,8 +36,10 @@
         //arays of data
         const games = getAllSales();
         const names = getAllGames();
-        const NA_Sales = [41.49, 29.08, 15.85, 15.75, 11.27, 23.2, 11.38, 14.03, 14.59, 26.93];
-        const EU_Sales = [29.02, 3.58, 12.88, 11.01, 8.89, 2.26, 9.23, 9.2, 7.06, 0.63,];
+        const NA_Sales = [41.49, 29.08, 26.93, 23.2, 15.85, 15.75, 14.97, 14.59, 14.03, 12.78];
+        const NA_Titles = ['Wii Sports', 'Super Mario Bros.', 'Duck Hunt', 'Tetris', 'Mario Kart Wii', 'Wii Sports Resort', 'Kinect Adventures!', 'New Super Mario Bros. Wii', 'Wii Play', 'Super Mario World'];
+        const EU_Sales = [29.02, 12.88, 11.01, 11, 9.27, 9.26, 9.23, 9.2, 8.89, 8.59,];
+        const EU_Titles = ['Wii Sports', 'Mario Kart Wii', 'Nintendogs', 'Grand Theft Auto V', 'Brain Age: Train Your Brain in Minutes a Day', 'New Super Mario Bros.', 'Wii Play,', 'Pokemon Red/Pokemon Blue', 'Wii Fit Plus'];
         const Global_Sales = [82.74, 40.24, 35.82, 33, 31.37, 30.26, 30.01, 29.02, 28.62, 28.31,]
 
         //colors:
@@ -52,7 +54,8 @@
                 datasets: [{
                     label: '# of Sales in millions',
                     data: NA_Sales,
-                    borderWidth: 1
+                    borderWidth: 1,
+                    backgroundColor: barColors
                 }]
             },
             options: {
@@ -71,11 +74,13 @@
         //changes the charts values to display either NA or EU sales on button click
         function NA_Chart() {
             chart.data.datasets[0].data = NA_Sales
+            chart.data.datasets[0].labels = NA_Titles
             chart.update();
 
         }
         function EU_Chart() {
             chart.data.datasets[0].data = EU_Sales
+            chart.data.datasets[0].labels = EU_Titles
             chart.update();
 
         }
@@ -115,7 +120,8 @@
                 datasets: [{
                     label: '# of Sales in millions',
                     data: games,
-                    borderWidth: 1
+                    borderWidth: 1,
+                    // backgroundColor: barColors //wont work?? too much data?
                 }]
             },
             options: {
