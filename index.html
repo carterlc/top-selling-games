@@ -29,6 +29,30 @@
         <h2>Top 1000</h2>
         <canvas id="allGlobal"></canvas>
     </div>
+    <div class="card">
+        <h2>Top Selling Genre</h2>
+        <canvas id="topGenre"></canvas>
+    </div>
+    <div class="card">
+        <h2>Highest Selling Years Gloably</h2>
+        <canvas id="topYear"></canvas>
+    </div>
+    <div class="card">
+        <h2>My Favourite Game's Sales</h2>
+        <canvas id="favGame"></canvas>
+    </div>
+    <div class="card">
+        <h2>What Games Ive Spent The Most Hours On</h2>
+        <canvas id="hoursSpent"></canvas>
+    </div>
+    <div class="card">
+        <h2>Most Sales on Popular Gaming Consoles</h2>
+        <canvas id="topConsole"></canvas>
+    </div>
+    <div class="card">
+        <h2>Most Sales For Each Publisher</h2>
+        <canvas id="topPublisher"></canvas>
+    </div>
     <script type="module">
         //import array from script-main
         import { getAllSales, getAllGames } from './scripts/script-main.js';
@@ -85,8 +109,8 @@
 
         }
         //top selling video games globaly
-        const x = document.getElementById('topGlobal');
-        const topGlobal = new Chart(x, {
+        const ii = document.getElementById('topGlobal');
+        const topGlobal = new Chart(ii, {
             type: 'bar',
             data: {
                 labels: ['Wii Sports', 'Super Mario Bros.', 'Mario Kart Wii', 'Wii Sports Resort', 'Pokemon Red/Blue', 'Tetris', 'New Super Mario Bros.', 'Wii Play', 'New Super Mario Bros. Wii', 'Duck Hunt'],
@@ -112,8 +136,8 @@
         });
 
         //Top 1000 highest selling video games
-        const xx = document.getElementById('allGlobal');
-        const allGlobal = new Chart(xx, {
+        const iii = document.getElementById('allGlobal');
+        const allGlobal = new Chart(iii, {
             type: 'bar',
             data: {
                 labels: names,
@@ -121,7 +145,6 @@
                     label: '# of Sales in millions',
                     data: games,
                     borderWidth: 1,
-                    // backgroundColor: barColors //wont work?? too much data?
                 }]
             },
             options: {
@@ -138,6 +161,157 @@
             }
         });
 
+        //Top selling genres
+        const iv = document.getElementById('topGenre');
+        const topGenre = new Chart(iv, {
+            type: 'bar',
+            data: {
+                labels: ['Action', 'Shooter', 'Sports', 'Platform', 'Role-Playing', 'Misc', 'Racing', 'Fighting', 'Simulation', 'Puzzle', 'Adventure', 'Strategy'],
+                datasets: [{
+                    label: '# of Sales in millions',
+                    data: [783.5, 605, 564.5, 535, 514.8, 372.2, 351.7, 185.7, 157.6, 114.1, 62.8, 40],
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function (value) {
+                                return "$" + value + "m";
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        //Most sales in individual years
+        const v = document.getElementById('topYear');
+        const topYear = new Chart(v, {
+            type: 'bar',
+            data: {
+                labels: ['2009', '2006', '2010', '2007', '2008', '2011', '2013', '2005', '2001', '2014'],
+                datasets: [{
+                    label: '# of Sales in millions',
+                    data: [304.4, 292.1, 291.9, 285.9, 269.3, 237.4, 214.2, 196.8, 183.4, 175.7],
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function (value) {
+                                return "$" + value + "m";
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        //My favourite game
+        const vi = document.getElementById('favGame');
+        const favGame = new Chart(vi, {
+            type: 'bar',
+            data: {
+                labels: ['Destiny PS4', 'Destiny Xbox One', 'Destiny Xbox 360'],
+                datasets: [{
+                    label: '# of Sales in millions',
+                    data: [5.65, 3.28, 1.95],
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function (value) {
+                                return "$" + value + "m";
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        //My time spent on particular video games
+        const vii = document.getElementById('hoursSpent');
+        const hoursSpent = new Chart(vii, {
+            type: 'bar',
+            data: {
+                labels: ['Grand Theft Auto V', 'Wii Party', 'Yu-Gi-Oh! The Duelists of the Roses', 'Dragon Warrior Monsters', 'Ratchet & Clank Future: A Crack in Time', 'Tetris', 'Resident Evil 6', 'FIFA 16', 'Gran Turismo 4', 'Mario Kart Wii'],
+                datasets: [{
+                    label: '# of Sales in millions',
+                    data: [500, 240, 114, 90, 81, 69, 57, 50, 47, 46],
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function (value) {
+                                return "$" + value + "m";
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        //What console has sold the most games globaly
+        const viii = document.getElementById('topConsole');
+        const topConsole = new Chart(viii, {
+            type: 'bar',
+            data: {
+                labels: ['PS2', 'Xbox 360', 'Wii', 'PS3', 'DS', 'PS', 'GB', 'NES', 'PS4', '3DS'],
+                datasets: [{
+                    label: '# of Sales in millions',
+                    data: [572, 543.1, 529.2, 476.6, 376.3, 302.5, 210.6, 184.8, 180.7, 138.2],
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function (value) {
+                                return "$" + value + "m";
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        //What publisher has sold the most games
+        const ix = document.getElementById('topPublisher');
+        const topPublisher = new Chart(ix, {
+            type: 'bar',
+            data: {
+                labels: ['Nintendo', 'Electronic Arts', 'Activision', 'Sony Computer Entertainment', 'Take-Two Interactive', 'Ubisoft', 'Microsoft Game Studios', 'Konami Digital Entertainment', 'THQ', 'SEGA'],
+                datasets: [{
+                    label: '# of Sales in millions',
+                    data: [1507.9, 479, 375.8, 356.7, 255.8, 189, 182.4, 85, 84.4, 82.2],
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function (value) {
+                                return "$" + value + "m";
+                            }
+                        }
+                    }
+                }
+            }
+        });
     </script>
 </body>
 
